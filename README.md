@@ -1,14 +1,6 @@
 # 💬 Laravel Chat App
 
-Aplikasi chat real-time yang dibangun dengan **Laravel Filament** + **Wirechat** - kombinasi yang powerful untuk membuat aplikasi chat modern dengan kemampuan messaging real-time. Wirechat adalah package Laravel Livewire yang membawa komunikasi private & group real-time ke aplikasi Anda.
-
-## 📋 Daftar Isi
-
-- [Tentang Proyek](#-tentang-proyek)
-- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
-- [Persyaratan Sistem](#-persyaratan-sistem)
-- [Instalasi](#-instalasi)
-- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
+Aplikasi chat real-time yang dibangun dengan **Laravel Filament** + **[Wirechat](https://github.com/namumakwembo/wirechat)** - kombinasi yang powerful untuk membuat aplikasi chat modern dengan kemampuan messaging real-time. [Wirechat](https://github.com/namumakwembo/wirechat) adalah package Laravel Livewire yang membawa komunikasi private & group real-time ke aplikasi Anda.
 
 ## 🛠️ Teknologi yang Digunakan
 
