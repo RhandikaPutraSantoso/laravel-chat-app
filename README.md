@@ -1,95 +1,98 @@
-# Chat App
+# 💬 Laravel Chat App
 
-This project is built with **Laravel Filament** + **Wirechat** - a powerful combination for creating modern chat applications with real-time messaging capabilities.
+Aplikasi chat real-time yang dibangun dengan **Laravel Filament** + **Wirechat** - kombinasi yang powerful untuk membuat aplikasi chat modern dengan kemampuan messaging real-time. Wirechat adalah package Laravel Livewire yang membawa komunikasi private & group real-time ke aplikasi Anda.
 
-## About This Project
+## 📋 Daftar Isi
 
-This chat application leverages the power of Laravel Filament for admin panel functionality and Wirechat for real-time chat features. Wirechat is a Laravel Livewire chat package that brings real-time private & group communication to your application.
+- [Tentang Proyek](#-tentang-proyek)
+- [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
+- [Persyaratan Sistem](#-persyaratan-sistem)
+- [Instalasi](#-instalasi)
+- [Menjalankan Aplikasi](#-menjalankan-aplikasi)
 
-## Wirechat Package
+## 🛠️ Teknologi yang Digunakan
 
-This project uses [Wirechat](https://github.com/namumakwembo/wirechat) - a powerful Laravel Livewire chat application package that brings real-time private & group communication to your application. With embeddable components, it seamlessly integrates into your project, providing a feature-rich chat experience for your users.
+- **Laravel 12** - PHP Framework
+- **Laravel Filament 3.3** - Admin Panel
+- **Wirechat 0.2.10** - Chat Package
+- **Laravel Reverb** - WebSocket Server
+- **Laravel Livewire** - Dynamic UI Components
+- **MySQL** - Database
 
-## 🚀 Installation
+## 📋 Persyaratan Sistem
 
-### 1. Clone the Repository
+- **PHP** >= 8.2
+- **Composer** >= 2.0
+- **Node.js** >= 18.0
+- **NPM** >= 9.0
+- **MySQL** >= 8.0 atau **PostgreSQL** >= 13
+
+## 🚀 Instalasi
+
+### 1. Clone Repository
 ```bash
 git clone https://github.com/SeptiawanAjiP/laravel-chat-app
 cd laravel-chat-app
 ```
 
-### 2. Install Dependencies
+### 2. Install Laravel
 ```bash
-# Install PHP dependencies
+# Copy file environment
+cp .env.example .env
+
+# Install dependencies PHP
 composer install
 
+# Generate application key
+php artisan key:generate
+
+# Buat symbolic link untuk storage
+php artisan storage:link
+
+# Atur database dulu di .env (lihat konfigurasi database di bawah)
+
+# Jalankan migrasi database
+php artisan migrate
+
+# Seed database dengan data sample
+php artisan db:seed
+```
+
+### 3. Install Dependencies Frontend
+```bash
 # Install Node.js dependencies
 npm install
 ```
 
-### 3. Environment Setup
+### 4. Config Wirechat
 ```bash
-# Copy environment file
-cp .env.example .env
+# Install broadcasting
+php artisan install:broadcasting
 
-# Generate application key
-php artisan key:generate
-```
+# Start Reverb server
+php artisan reverb:start
 
-### 4. Database Configuration
-Update your `.env` file with database credentials:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=chat_app
-DB_USERNAME=your_username
-DB_PASSWORD=your_password
-```
+# Start queue worker
+php artisan queue:work --queue=messages,default
 
-### 5. Run Migrations
-```bash
-php artisan migrate
-```
-
-### 6. Storage Setup
-```bash
-# Create storage link for file uploads
-php artisan storage:link
-```
-
-### 7. Build Assets
-```bash
-# Development
+# Build assets
 npm run dev
-
-# Production
-npm run build
 ```
 
-## 🏃‍♂️ Running the Application
+## 🏃‍♂️ Cara Menjalankan
 
-### Development Mode
-Use the convenient development script that runs all services concurrently:
+### 1. Start Laravel Server
 ```bash
-composer run dev
-```
-
-This command starts:
-- Laravel development server (port 8000)
-- Queue worker for real-time messaging
-- Log monitoring with Pail
-- Vite development server for hot reloading
-
-### Manual Setup
-Alternatively, run each service separately:
-```bash
-# Terminal 1: Start Laravel server
 php artisan serve
-
-# Terminal 2: Start queue worker
-php artisan queue:work
-
-# Terminal 3: Start Vite dev server
-npm run dev
 ```
+
+### 2. Akses Admin Panel
+- Buka browser dan akses: **http://127.0.0.1:8000/admin**
+- Login dengan salah satu user yang ada di database
+- **Email**: Lihat data email di database (tabel users)
+- **Password**: `password` (default untuk semua user)
+
+### 3. Akses Chat Interface
+Setelah login ke admin panel:
+- Akses: **http://127.0.0.1:8000/chats**
+- Sekarang Anda sudah bisa melakukan chat!
